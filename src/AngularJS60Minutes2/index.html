@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html ng-app="demoApp">
+<head>
+    <meta charset="utf-8" />
+    
+    <title>Using AngularJS Directives and Data Binding</title>
+
+
+</head>
+<body>
+    <div>
+        <!--Placeholder for the views-->
+       <div ng-view></div>
+    </div>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled Bootstrap JavaScript file -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+
+
+    <script>
+        var demoApp = angular.module('demoApp', ['ngRoute']);
+
+        demoApp.config([function ($routeProvider) {
+            $routeProvider
+                .when('/',
+                {
+                    controller: 'SimpleController',
+                    templateUrl: 'Partials/View1.html'
+                })
+                .when('/View2', {
+                    controller: 'SimpleController',
+                    templateUrl: 'Partials/View2.html'
+                })
+            .otherwise({ redirectTo: '/' });
+        }]);
+
+        demoApp.controller(controllers);
+
+
+        var controllers = {};
+        controllers.SimpleController = function ($scope) {
+            $scope.customers = [
+                { name: 'John Doe', city: 'New York' },
+                { name: 'Jane Doe', city: 'Boston' },
+                { name: 'John Smith', city: 'Phoenix' }
+            ];
+
+            $scope.addCustomer = function () {
+                $scope.customers.push({
+                    name: $scope.newCustomer.name,
+                    city: $scope.newCustomer.city
+                });
+            };
+        };
+    </script>
+        
+       
+        
+</body>
+
+</html>
