@@ -11,7 +11,7 @@
                 template: '<h5>This is the home route</h5>'
             })
             .when('/View2', {
-                template: '<h5>This is the View2 Route<h5>'
+                templateUrl: '/Partials/View2.html'
             })
             .otherwise({ redirectTo: '/' });
 

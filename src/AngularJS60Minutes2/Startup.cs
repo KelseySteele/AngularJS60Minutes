@@ -20,6 +20,8 @@ namespace AngularJS60Minutes2
         {
             // Add the platform handler to the request pipeline.
             app.UseMvc();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }
